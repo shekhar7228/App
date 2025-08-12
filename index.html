@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Update</title>
+    
+    <!-- Google Fonts for better look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- === CSS STYLES START HERE === -->
+    <style>
+        /* Basic Reset and Font setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #111; /* Fallback agar animation load na ho */
+            color: white;
+            overflow: hidden; /* Scrollbars ko chupane ke liye */
+        }
+
+        /* Background Animation Container */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Isse ye content ke piche chala jayega */
+        }
+
+        /* Dialog Box ka Style */
+        .dialog-box {
+            background: rgba(255, 255, 255, 0.1); /* Halka sa transparent background */
+            backdrop-filter: blur(15px); /* Piche ke animation ko blur karega (Glass effect) */
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px 50px;
+            text-align: center;
+            max-width: 450px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            animation: fadeIn 1s ease-in-out; /* Simple fade in animation */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .dialog-box h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .dialog-box .version-info {
+            font-size: 1.1rem;
+            background-color: rgba(0, 255, 13, 0.15);
+            color: #90ee90; /* Light green text */
+            padding: 8px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .dialog-box p {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Download Button ka Style */
+        .download-btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 35px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px); /* Button thoda upar uthega */
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+        }
+    </style>
+    <!-- === CSS STYLES END HERE === -->
+</head>
+<body>
+
+    <!-- Ye div background animation ke liye hai -->
+    <div id="particles-js"></div>
+
+    <!-- Ye hamara dialog box hai -->
+    <div class="dialog-box">
+        <h1>Software Update</h1>
+        <p class="version-info">New Version Available: <strong>v2.5.1</strong></p>
+        <p>Latest features aur security improvements ke liye abhi update karein.</p>
+        
+        <!-- Download Button jo Telegram link par jayega -->
+        <a href="https://t.me/hackinjectlab" target="_blank" class="download-btn">
+            Download & Update
+        </a>
+    </div>
+
+    <!-- Animation library (tsParticles) ko load kar rahe hain -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    
+    <!-- === JAVASCRIPT FOR ANIMATION STARTS HERE === -->
+    <script>
+        // tsParticles ko initialize kar rahe hain
+        tsParticles.load("particles-js", {
+          // Background settings
+          background: {
+            color: {
+              value: "#0d1117", // Dark background color
+            },
+          },
+          // Particles ki settings
+          particles: {
+            number: {
+              value: 80, // Kitne particles dikhenge
+              density: {
+                enable: true,
+                value_area: 800,
+              },
+            },
+            color: {
+              value: "#ffffff", // Particles ka color
+            },
+            shape: {
+              type: "circle", // Particles ka shape
+            },
+            opacity: {
+              value: 0.5,
+              random: true,
+            },
+            size: {
+              value: 3,
+              random: true,
+            },
+            // Particles ke beech ki line
+            links: {
+              enable: true,
+              distance: 150,
+              color: "#ffffff",
+              opacity: 0.4,
+              width: 1,
+            },
+            // Particles ka movement
+            move: {
+              enable: true,
+              speed: 2,
+              direction: "none",
+              random: false,
+              straight: false,
+              out_mode: "out",
+              bounce: false,
+            },
+          },
+          // Mouse se interaction
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: {
+                enable: true,
+                mode: "repulse", // Mouse le jane par particles dur bhagenge
+              },
+              onclick: {
+                enable: true,
+                mode: "push", // Click karne par naye particles add honge
+              },
+              resize: true,
+            },
+            modes: {
+              repulse: {
+                distance: 100,
+                duration: 0.4,
+              },
+              push: {
+                particles_nb: 4,
+              },
+            },
+          },
+          detectRetina: true,
+        });
+    </script>
+    <!-- === JAVASCRIPT ENDS HERE === -->
+
+</body>
+</html>
